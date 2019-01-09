@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php?$1 [L,QSA]
+Header set Access-Control-Allow-Origin "*"
+#RewriteRule ^user/([A-Za-z0-9-]+) app/user.php?u=$1 [NC,L]

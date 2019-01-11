@@ -63,6 +63,10 @@ class Getter{
       case 'getCounties':
         echo $this->location->getCounties();
         break;
+      
+      case 'delete':
+        echo $this->listing->deleteListing($data[1]);
+        break;
         
       default:
         # code...

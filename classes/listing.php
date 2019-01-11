@@ -366,4 +366,21 @@
         
       }
     }
+
+    public function deleteListing($id){
+      $req['cols'] = '*';
+      $req['table_name'] = $this->table_name;
+      $req['params'] = 'WHERE listing_id=:listing_id';
+      $req['array'] = array(
+        ":listing_id" => $id
+      );
+
+      $delete = $this->db->thanos($req);
+
+      if($delete){
+        return true;
+      } else {
+        return false;
+      }
+    }
   }

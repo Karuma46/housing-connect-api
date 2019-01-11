@@ -86,5 +86,17 @@
       }
     }
 
+    public function thanos($req){
+      $sql = 'DELETE FROM '. $req['table_name'].' '.$req['params'];
+      $query = $this->conn->prepare($sql);
+      $query -> execute($req['array']);
+
+      if($query){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
   }
 ?>

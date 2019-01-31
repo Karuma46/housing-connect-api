@@ -65,7 +65,7 @@
     
     public function login($obj){
 
-      $req['cols'] = 'password,user_id';
+      $req['cols'] = 'password,user_id,role';
       $req['table_name'] = $this->table_name;
       $req['params'] = 'WHERE email=:email';
       $req['array'] = array(
@@ -83,6 +83,10 @@
         $salt = $pass->salt;
 
         if(password_verify($obj->password.$salt,$hash)){
+          $data = [
+            "user_id" => $user_details->user_id,
+            "role" => $user_details->role
+          ];
           return $this->response('success','Login Successful',$user_details->user_id);
         } else {
           return $this->response('fail','Wrong username or password. Try again!','');

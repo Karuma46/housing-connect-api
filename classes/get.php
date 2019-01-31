@@ -9,6 +9,7 @@ class Getter{
   public $chat;
   public $search;
   public $location;
+  public $db;
   
   
   public function __construct(){
@@ -17,6 +18,7 @@ class Getter{
     $this->chat = new Chat();
     $this->search = new Search();
     $this->location = new Location();
+    $this->db = new Database();
   }
 
   public function get($data){
@@ -66,6 +68,10 @@ class Getter{
       
       case 'delete':
         echo $this->listing->deleteListing($data[1]);
+        break;
+      
+      case 'test':
+        echo $this->db->test_db();
         break;
         
       default:

@@ -1,16 +1,15 @@
 <?php
+require_once('dbc.php');
 
-  class Database{
-    // Database Credentials
-
-    private $host = 'localhost';
-    private $dbname = 'housing';//housingc_db
-    private $dbuser = 'root';//housingc_admin
-    private $dbpass = '';//vsO0[ayICFR
+  class Database {
+    public $db;
+    public $dbc;
     public $conn;
 
     public function __construct(){
-        $this->conn = new PDO('mysql:host='.$this->host.';dbname='.$this->dbname,$this->dbuser,$this->dbpass);
+        $this->dbc = new dbc();
+        $this->db = $this->dbc->localdb();
+        $this->conn = new PDO('mysql:host='.$this->db['host'].';dbname='.$this->db['name'],$this->db['user'],$this->db['pass']);
     }
 
     // DATABASE OPERATIONS
@@ -97,6 +96,7 @@
         return false;
       }
     }
+  
 
   }
 ?>
